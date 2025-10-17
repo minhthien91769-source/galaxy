@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galaxy Tomdev88 - Bản chỉnh sửa</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" src="script.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.152.2/build/three.module.js",
+          "three/addons/controls/OrbitControls.js": "https://unpkg.com/three@0.152.2/examples/jsm/controls/OrbitControls.js",
+          "three/examples/jsm/loaders/FontLoader.js": "https://unpkg.com/three@0.152.2/examples/jsm/loaders/FontLoader.js",
+          "three/examples/jsm/geometries/TextGeometry.js": "https://unpkg.com/three@0.152.2/examples/jsm/geometries/TextGeometry.js"
+        }
+      }
+    </script>
+    
+  </head>
+
+  <body>
+    <!-- 🎵 Nhạc nền -->
+    <audio id="bg-music" autoplay loop>
+      <source src="music/nhacnen.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- 🌌 Canvas 3D -->
+    <div id="container"></div>
+
+    <!-- ⚠️ Cảnh báo xoay ngang (có sẵn trong bản gốc) -->
+    <div id="landscape-warning">
+      <div class="warning-content">
+        <div class="rotate-icon"></div>
+        <h1>Tomdev88 Stellar Bloom</h1>
+        <h1>Tinh Cầu tình yêu</h1>
+        <div class="stars-bg"></div>
+      </div>
+    </div>
+
+    <!-- 🌠 Vùng thêm nội dung của bạn -->
+    <div id="info">
+      <h2>💬 Thông điệp của bạn</h2>
+      <p>Viết nội dung, lời chúc, hoặc giới thiệu ở đây.</p>
+
+      <h2>📸 Hình ảnh kỷ niệm</h2>
+      <div class="gallery">
+        <img src="hinh1.jpg" alt="Hình 1" />
+      </div>
+    </div>
+
+    <!-- ⚙️ Script chính -->
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
