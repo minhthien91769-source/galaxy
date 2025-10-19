@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chúc mừng sinh nhật 🎂</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        overflow: hidden;
+        animation: bgmove 10s infinite alternate;
+    }
+
+    @keyframes bgmove {
+        0% { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
+        100% { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+    }
+
+    h1 {
+        color: #fff;
+        text-shadow: 0 0 25px #ff4081;
+        margin: 60px 0;
+        text-align: center;
+        font-size: 45px;
+        animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+        from { text-shadow: 0 0 10px #ff9a9e, 0 0 20px #ff9a9e; }
+        to { text-shadow: 0 0 40px #ff4081, 0 0 60px #ff4081; }
+    }
+
+    /* --- Băng chuyền ảnh ở giữa --- */
+   .scrolling-gallery {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  overflow: hidden;
+}
+
+.scrolling-gallery .track {
+  display: flex;
+  gap: 10px;
+  width: calc(310px * 35); /* 30 ảnh + 5 ảnh lặp lại, mỗi ảnh rộng 300 + gap 10 */
+  animation: move 120s linear infinite;
+}
+
+.scrolling-gallery img {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(255, 64, 129, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .scrolling-gallery img:hover {
+        transform: scale(1.2);
+        box-shadow: 0 0 25px #fff, 0 0 40px #ff4081;
+    }
+
+    @keyframes move {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-310px * 30)); } /* dịch hết 30 ảnh */
+}
+
+    /* Footer */
+    .footer {
+        position: absolute;
+        bottom: 100px;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-style: italic;
+        font-size: 30px;
+        text-shadow: 0 0 15px #ff80ab;
+    }
+
+    @media(max-width: 600px) {
+        .scrolling-gallery img {
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .explore-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 40px;
+      padding: 12px 22px;
+      background: linear-gradient(45deg, #ff66ff, #cc33ff);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 3;
+      box-shadow: 0 0 15px #ff99ff;
+      transition: 0.3s ease;
+    }
+    .explore-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff66ff;
+    }
+</style>
+</head>
+<body>
+
+<h1>Phải luôn hồn nhiên và rạng rỡ như vậy biết chưa🔥</h1>
+
+<!-- Băng chuyền ảnh -->
+<div class="scrolling-gallery">
+    <div class="track">
+        <!-- 30 ảnh -->
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+        <img src="photo5.jpg">
+        <img src="photo6.jpg">
+        <img src="photo7.jpg">
+        <img src="photo8.jpg">
+        <img src="photo9.jpg">
+        <img src="photo10.jpg">
+        <img src="photo11.jpg">
+        <img src="photo12.jpg">
+        <img src="photo13.jpg">
+        <img src="photo14.jpg">
+        <img src="photo15.jpg">
+        <img src="photo16.jpg">
+        <img src="photo17.jpg">
+        <img src="photo18.jpg">
+        <img src="photo19.jpg">
+        <img src="photo20.jpg">
+        <img src="photo21.jpg">
+        <img src="photo22.jpg">
+        <img src="photo23.jpg">
+        <img src="photo24.jpg">
+        <img src="photo25.jpg">
+        <img src="photo26.jpg">
+        <img src="photo27.jpg">
+        <img src="photo28.jpg">
+        <img src="photo29.jpg">
+        <img src="photo30.jpg">
+        <!-- lặp lại để chạy mượt -->
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+        <img src="photo5.jpg">
+    </div>
+</div>
+
+<div class="footer">
+    — Hãy thật hạnh phúc nhé các bạn của tôi 💌 —
+</div>
+
+<audio id="bg-music" loop>
+  <source src="Đại Lộ Mặt Trời.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="document.getElementById('bg-music').play()">🎵 Bật nhạc</button>
+
+</audio>
+
+<button class="explore-btn" onclick="window.location.href='https://panbap.github.io/galaxylovex/index.html?id=aHR0cHM6Ly9pLmliYi5jby9nWG1URmR3L2hpbmgyMi5qcGcsaHR0cHM6Ly9pLmliYi5jby9zOVBzdFpzOC9oaW5oMjMuanBnLGh0dHBzOi8vaS5pYmIuY28vUFowNlRrU0YvejcxMjc0MzA4ODcyNTItZTdjODkzMmM5ODM5ZTE3NDZiZWYyNjYzMWQyNTY5NTYuanBnLGh0dHBzOi8vaS5pYmIuY28vbUY4OEdKZ3IvejcxMjc0MzA4OTM1OTUtOWEwMzZkMGJjMWJmMmE3Mjk0Y2FiZDdjMGE3NWEyMGEuanBnLGh0dHBzOi8vaS5pYmIuY28vcHJoTUtzN0QvejcxMjc0MzA4OTk3NTItNjMwMDVhMmI2MzllZWIzMzMwNWNmNWNhZWU5YzIzNDAuanBnLGh0dHBzOi8vaS5pYmIuY28vUHZ6WWI3WWsvejcxMjc0MzA5MDE5ODgtMjgzNjU5MjEwYWQ4MDA5ZDY1NTE1NDkyMjFlYTBiMmQuanBn&texts=TG92ZSxHYWxheHk=&music=a.mp3'">Nơi lưu giữ kỉ niệm của chúng ta</button>
+</body>
+</html>

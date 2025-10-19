@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gửi đến những bạn nữ xinh đẹp của A4</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    h1 {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      font-size: 3em;
+      font-weight: 700;
+      color: #ffb6ff;
+      text-shadow: 0 0 15px #ff66ff, 0 0 30px #cc33ff;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .typing {
+  position: absolute;
+  top: 75%;           /* vị trí giữa theo chiều dọc */
+  left: 50%;          /* vị trí giữa theo chiều ngang */
+  transform: translate(-50%, -50%); /* dịch lên chính giữa */
+  width: 80%;
+  max-width: 800px;
+  text-align: center; /* căn giữa chữ */
+  font-size: 1.3em;
+  color: #ffccff;
+  text-shadow: 0 0 8px #ff99ff;
+  z-index: 2;
+  
+}
+
+    .explore-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 40px;
+      padding: 12px 22px;
+      background: linear-gradient(45deg, #ff66ff, #cc33ff);
+      border: none;
+      border-radius: 25px;
+      color: white;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 3;
+      box-shadow: 0 0 15px #ff99ff;
+      transition: 0.3s ease;
+    }
+
+    .explore-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff66ff;
+    }
+
+    .sound-btn {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 20px;
+      background: linear-gradient(45deg, #ff99ff, #cc33ff);
+      color: white;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff99ff;
+      z-index: 3;
+      transition: 0.3s ease;
+    }
+
+    .sound-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff66ff;
+    }
+  </style>
+</head>
+<body>
+  <!-- Hiệu ứng nền -->
+  <canvas id="galaxy"></canvas>
+
+  <!-- Âm nhạc nền -->
+  <audio id="bg-music" loop>
+    <source src="chill.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Âm thanh gõ chữ -->
+  <audio id="typing-sound">
+    <source src="typing.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- Tiêu đề và chữ gõ -->
+  <h1>Gửi đến những bạn nữ xinh đẹp của A4</h1>
+  <div class="typing" id="typing-text"></div>
+
+  <!-- Nút bật âm thanh -->
+  <button class="sound-btn" id="sound-toggle">🔊 Bật âm thanh</button>
+
+  <!-- Nút chuyển trang -->
+  <button class="explore-btn" onclick="window.location.href='video.html'">
+    Hãy đến với A4
+</button>
+
+
+
+
+
+  <script>
+    // Nền galaxy (hiệu ứng sao bay)
+    const canvas = document.getElementById("galaxy");
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    let stars = [];
+    for (let i = 0; i < 300; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        z: Math.random() * canvas.width,
+      });
+    }
+
+    function draw() {
+      ctx.fillStyle = "rgba(0, 0, 20, 0.3)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#ffccff";
+      stars.forEach((star) => {
+        let k = 128.0 / star.z;
+        let px = star.x * k + canvas.width / 2;
+        let py = star.y * k + canvas.height / 2;
+        if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+          let size = (1 - star.z / canvas.width) * 2;
+          ctx.beginPath();
+          ctx.arc(px, py, size, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+        star.z -= 2;
+        if (star.z <= 0) {
+          star.z = canvas.width;
+          star.x = Math.random() * canvas.width - canvas.width / 2;
+          star.y = Math.random() * canvas.height - canvas.height / 2;
+        }
+      });
+      requestAnimationFrame(draw);
+    }
+    draw();
+    window.addEventListener("resize", () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+
+    // Hiệu ứng gõ chữ + âm thanh
+    const text = `Hihi, năm nay là lần đầu xa nhau nhỉ. 
+    2 tháng bôn ba trên đất Sài Gòn này không biết nhà gái có mệt nhiều không? 
+    Có nhớ tụi tui không? Chứ tụi tui nhớ lắm đó! Lên đây mỗi đứa một nơi rồi, thành ra tụi tui không có hiện vật để tặng được, chỉ có món quà tinh thần là sự chân thành này thôi. 
+    Chúc mấy bạn nữ của A4-k22 có 1 ngày Phụ nữ Việt Nam 20/10/2025 thật hạnh phúc nhá!💖`;
+    const typingText = document.getElementById("typing-text");
+    const typingSound = document.getElementById("typing-sound");
+    typingSound.volume = 0.4; // 🔊 âm gõ to
+    const bgMusic = document.getElementById("bg-music");
+    bgMusic.volume = 1.0; // 🔉 nhạc nhỏ hơn
+
+    let index = 0;
+    function type() {
+      if (index < text.length) {
+        typingText.textContent += text.charAt(index);
+        typingSound.currentTime = 0;
+        typingSound.play();
+        index++;
+        setTimeout(type, 120);
+      }
+    }
+
+    // Nút bật âm thanh
+    const soundBtn = document.getElementById("sound-toggle");
+    soundBtn.addEventListener("click", () => {
+      bgMusic.play().catch(() => {});
+      typingSound.play().catch(() => {});
+      typingSound.pause();
+      soundBtn.textContent = "🔈 Âm thanh đã bật";
+      type();
+    });
+  </script>
+</body>
+</html>
